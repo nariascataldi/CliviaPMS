@@ -51,6 +51,7 @@ La aplicación sigue una arquitectura modularizada con las siguientes capas:
 *   **Channel Manager (Opcional):**  [Nombre del Channel Manager] (si se utiliza)
 
 ## Estructura de la Solución
+```mermaid
 graph LR
     subgraph CliviaPMS Solution
     direction TB
@@ -121,6 +122,8 @@ graph LR
 
     end
     style CliviaPMS Solution fill:#f9f,stroke:#333,stroke-width:2px
+```
+
 ## Configuración
 
 1.  **Clona el repositorio:**
