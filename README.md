@@ -51,7 +51,76 @@ La aplicación sigue una arquitectura modularizada con las siguientes capas:
 *   **Channel Manager (Opcional):**  [Nombre del Channel Manager] (si se utiliza)
 
 ## Estructura de la Solución
+graph LR
+    subgraph CliviaPMS Solution
+    direction TB
 
+    subgraph Clivia.Core
+        direction TB
+        CoreModels((Modelos))
+        CoreInterfaces((Interfaces))
+        CoreEnums((Enums))
+        CoreValidations((Validaciones))
+    end
+
+    subgraph Clivia.Infrastructure
+        direction TB
+        InfDbContext((DbContext))
+        InfRepositories((Repositorios))
+        InfConfig((Configuración BD))
+        InfMigrations((Migraciones))
+    end
+
+    subgraph Clivia.Application
+        direction TB
+        AppServices((Servicios))
+        AppLogic((Lógica de Negocio))
+        AppMappers((Mappers))
+        AppCQRS((CQRS/Mediator))
+    end
+
+    subgraph Clivia.Backend
+        direction TB
+        BackendControllers((Controladores))
+        BackendConfig((Configuración API))
+        BackendSwagger((Swagger))
+        BackendMiddleware((Middleware))
+    end
+
+    subgraph Clivia.Frontend
+        direction TB
+        FrontendComponents((Componentes))
+        FrontendRoutes((Rutas))
+        FrontendState((Estado))
+        FrontendAPI((Llamadas API))
+    end
+
+    subgraph Clivia.Integrations
+        direction TB
+        IntegrationBooking((BookingPlatform))
+        IntegrationReputation((ReputationManagement))
+        IntegrationGeneric((Otras Integraciones...))
+    end
+
+    CoreModels --> CoreInterfaces
+    CoreInterfaces --> AppServices
+
+    InfDbContext --> InfRepositories
+    InfRepositories --> AppServices
+
+    AppServices --> AppLogic
+    AppLogic --> AppMappers
+    AppLogic --> InfRepositories
+
+    BackendControllers --> AppServices
+
+    FrontendAPI --> BackendControllers
+
+    IntegrationBooking --> Clivia.Backend
+    IntegrationReputation --> Clivia.Backend
+
+    end
+    style CliviaPMS Solution fill:#f9f,stroke:#333,stroke-width:2px
 ## Configuración
 
 1.  **Clona el repositorio:**
