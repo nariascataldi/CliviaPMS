@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Clivia.Core\Clivia.Core.csproj" />
+    <ProjectReference Include="..\Clivia.Infrastructure\Clivia.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>
