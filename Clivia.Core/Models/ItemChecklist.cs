@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class ItemsChecklist
+    public class ItemChecklist
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class ProvinciasEstados
+    public class ProvinciaEstado
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,16 +17,6 @@ namespace Clivia.Core.Models
         [Required]
         public int IdPais { get; set; }
         public virtual Pais Pais { get; set; }
-        public virtual ICollection<CodigosPostales> CodigosPostales { get; set; } = new List<CodigosPostales>();
+        public virtual ICollection<CodigoPostal> CodigosPostales { get; set; } = new List<CodigosPostales>();
     }
-}using System;
-namespace Clivia.Core.Models
-{
-	public class ProvinciasEstados
-	{
-		public ProvinciasEstados()
-		{
-		}
-	}
 }
-

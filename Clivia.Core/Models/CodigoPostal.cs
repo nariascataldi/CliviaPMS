@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class CodigosPostales
+    public class CodigoPostal
     {
         [Key]
         [MaxLength(7)]
@@ -15,7 +15,7 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdProvinciaEstado { get; set; }
-        public virtual ProvinciasEstados ProvinciasEstados { get; set; }
+        public virtual ProvinciaEstado ProvinciasEstados { get; set; }
 
         public virtual ICollection<Direccion> Direcciones { get; set; } = new List<Direccion>();
     }
