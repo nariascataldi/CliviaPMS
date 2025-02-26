@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class ResultadosChecklist
+    public class ResultadoChecklist
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,6 @@ namespace Clivia.Core.Models
 
         public DateTime FechaAplicacion { get; set; } = DateTime.Now;
 
-        public virtual ICollection<ResultadosItemsChecklist> ResultadosItemsChecklists { get; set; } = new List<ResultadosItemsChecklist>();
+        public virtual ICollection<ResultadoItemChecklist> ResultadosItemsChecklists { get; set; } = new List<ResultadoItemChecklist>();
     }
 }

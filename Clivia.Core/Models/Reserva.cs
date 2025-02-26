@@ -39,7 +39,7 @@ namespace Clivia.Core.Models
         [MaxLength(50)]
         public string EstadoReserva { get; set; }
 
-        public string Comentarios { get; set; }
+        //public string Comentarios { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
@@ -51,9 +51,9 @@ namespace Clivia.Core.Models
         [MaxLength(50)]
         public string ModificadoPor { get; set; }
 
-        public virtual ICollection<ServiciosReservas> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
+        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
         public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
-        public virtual ICollection<HabitacionesFecha> HabitacionesFechas { get; set; } = new List<HabitacionesFecha>();
+        public virtual ICollection<HabitacionFecha> HabitacionesFechas { get; set; } = new List<HabitacionesFecha>();
 
 
     }

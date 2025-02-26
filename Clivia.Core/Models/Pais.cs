@@ -17,7 +17,7 @@ namespace Clivia.Core.Models
         [MaxLength(2)]
         public string CodigoISO { get; set; }
 
-        public virtual ICollection<ProvinciasEstados> ProvinciasEstados { get; set; } = new List<ProvinciasEstados>();
+        public virtual ICollection<ProvinciaEstado> ProvinciasEstados { get; set; } = new List<ProvinciasEstados>();
 
     }
 }

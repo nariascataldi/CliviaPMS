@@ -34,7 +34,7 @@ namespace Clivia.Core.Models
         public virtual ICollection<Habitacion> Habitaciones { get; set; } = new List<Habitacion>();
         public virtual ICollection<Resena> Resenas { get; set; } = new List<Resena>();
 
-        public virtual ICollection<PropiedadesComodidades> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
+        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
 
         public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
 
