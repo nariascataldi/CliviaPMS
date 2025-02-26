@@ -9,27 +9,27 @@ namespace Clivia.Infrastructure.Data
 //TODO: Revisar las tablas conté 23 y son 26
         public DbSet<Habitacion> Habitaciones { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Factura> Facturas { get; set; }
-        public DbSet<Tarea> Tareas { get; set; }
-        public DbSet<Checklist> Checklists { get; set; }
-        public DbSet<ItemsChecklist> ItemsChecklists { get; set; }
-        public DbSet<Comentario> Comentarios { get; set; }
-        public DbSet<Servicio> Servicios { get; set; }
-        public DbSet<Asistencia> Asistencias { get; set; }
-        public DbSet<CodigoPostal> CodigosPostales { get; set; }
-        public DbSet<Comodidad> Comodidades { get; set; }
-        public DbSet<Direccion> Direcciones { get; set; }
-        public DbSet<EstadoHabitacion> EstadosHabitacion { get; set; }
-        public DbSet<Pais> Paises { get; set; }
-        public DbSet<Piso> Pisos { get; set; }
-        public DbSet<Propiedad> Propiedades { get; set; }
-        public DbSet<ProvinciaEstado> ProvinciasEstados { get; set; }
-        public DbSet<Resena> Resenas { get; set; }
-        public DbSet<RolUsuario> RolesUsuarios { get; set; }
-        public DbSet<ServicioReserva> ServiciosReservas { get; set; }
-        public DbSet<HabitacionesFecha> HabitacionesFechas { get; set; }
+        //public DbSet<Cliente> Clientes { get; set; }
+        //public DbSet<Usuario> Usuarios { get; set; }
+        //public DbSet<Factura> Facturas { get; set; }
+        //public DbSet<Tarea> Tareas { get; set; }
+        //public DbSet<Checklist> Checklists { get; set; }
+        //public DbSet<ItemsChecklist> ItemsChecklists { get; set; }
+        //public DbSet<Comentario> Comentarios { get; set; }
+        //public DbSet<Servicio> Servicios { get; set; }
+        //public DbSet<Asistencia> Asistencias { get; set; }
+        //public DbSet<CodigoPostal> CodigosPostales { get; set; }
+        //public DbSet<Comodidad> Comodidades { get; set; }
+        //public DbSet<Direccion> Direcciones { get; set; }
+        //public DbSet<EstadoHabitacion> EstadosHabitacion { get; set; }
+        //public DbSet<Pais> Paises { get; set; }
+        //public DbSet<Piso> Pisos { get; set; }
+        //public DbSet<Propiedad> Propiedades { get; set; }
+        //public DbSet<ProvinciaEstado> ProvinciasEstados { get; set; }
+        //public DbSet<Resena> Resenas { get; set; }
+        //public DbSet<RolUsuario> RolesUsuarios { get; set; }
+        //public DbSet<ServicioReserva> ServiciosReservas { get; set; }
+        //public DbSet<HabitacionesFecha> HabitacionesFechas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
