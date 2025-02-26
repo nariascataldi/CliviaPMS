@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class ServiciosReservas
+    public class ServicioReserva
     {
         [Key, Column(Order = 0)]
         public int IdReserva { get; set; }

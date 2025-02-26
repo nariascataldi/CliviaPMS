@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class RolesUsuarios
+    public class EstadoHabitacion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,6 +26,6 @@ namespace Clivia.Core.Models
 
         [MaxLength(50)]
         public string ModificadoPor { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public virtual ICollection<Habitacion> Habitaciones { get; set; } = new List<Habitacion>();
     }
 }

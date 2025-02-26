@@ -30,7 +30,7 @@ namespace Clivia.Core.Models
         [MaxLength(50)]
         public string ModificadoPor { get; set; }
 
-        public virtual ICollection<ItemsChecklist> ItemsChecklists { get; set; } = new List<ItemsChecklist>();
-        public virtual ICollection<ResultadosChecklist> ResultadosChecklists { get; set; } = new List<ResultadosChecklist>();
+        public virtual ICollection<ItemChecklist> ItemsChecklists { get; set; } = new List<ItemsChecklist>();
+        public virtual ICollection<ResultadoChecklist> ResultadosChecklists { get; set; } = new List<ResultadosChecklist>();
     }
 }

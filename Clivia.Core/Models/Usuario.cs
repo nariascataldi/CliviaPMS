@@ -37,7 +37,7 @@ namespace Clivia.Core.Models
         public bool EsUsuario { get; set; } = true;
 
         public short? IdRolUsuario { get; set; }
-        public virtual RolesUsuarios RolesUsuarios { get; set; }
+        public virtual RolUsuario RolesUsuarios { get; set; }
 
         public bool Estado { get; set; } = true;
 
@@ -55,7 +55,7 @@ namespace Clivia.Core.Models
         public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
         public virtual ICollection<Asistencia> Asistencias { get; set; } = new List<Asistencia>();
         public virtual ICollection<Tarea> Tareas { get; set; } = new List<Tarea>();
-        public virtual ICollection<ResultadosChecklist> ResultadosChecklists { get; set; } = new List<ResultadosChecklist>();
+        public virtual ICollection<ResultadoChecklist> ResultadosChecklists { get; set; } = new List<ResultadosChecklist>();
 
     }
 }

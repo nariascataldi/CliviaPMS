@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class Comodidades
+    public class Comodidad
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,6 +26,6 @@ namespace Clivia.Core.Models
 
         [MaxLength(50)]
         public string ModificadoPor { get; set; }
-        public virtual ICollection<PropiedadesComodidades> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
+        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
     }
 }

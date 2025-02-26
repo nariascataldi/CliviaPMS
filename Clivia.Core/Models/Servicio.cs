@@ -32,6 +32,6 @@ namespace Clivia.Core.Models
 
         [MaxLength(50)]
         public string ModificadoPor { get; set; }
-        public virtual ICollection<ServiciosReservas> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
+        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
 {
-    public class HabitacionesFecha
+    public class HabitacionFecha
     {
         [Key, Column(Order = 0)]
         public int IdHabitacion { get; set; }
