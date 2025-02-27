@@ -13,24 +13,24 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(100)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
         [MaxLength(50)]
-        public string TipoChecklist { get; set; }
+        public string TipoChecklist { get; set; } = string.Empty;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
 
-        public virtual ICollection<ItemChecklist> ItemsChecklists { get; set; } = new List<ItemsChecklist>();
-        public virtual ICollection<ResultadoChecklist> ResultadosChecklists { get; set; } = new List<ResultadosChecklist>();
+        public virtual ICollection<ItemChecklist> ItemsChecklists { get; set; } = new List<ItemChecklist>();
+        public virtual ICollection<ResultadoChecklist> ResultadosChecklists { get; set; } = new List<ResultadoChecklist>();
     }
 }

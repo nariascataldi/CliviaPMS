@@ -13,25 +13,26 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(100)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Precio { get; set; }
+        public decimal? Precio { get; set; }
 
-        public bool Estado { get; set; } = true;
+        public bool Estado { get; set; } = false;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
-        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
+        public string ModificadoPor { get; set; } = string.Empty;
+
+        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServicioReserva>();
     }
 }

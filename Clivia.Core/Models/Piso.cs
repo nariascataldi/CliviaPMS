@@ -12,19 +12,19 @@ namespace Clivia.Core.Models
         public short Id { get; set; }
 
         [MaxLength(50)]
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
-        public bool Estado { get; set; } = true;
+        public bool Estado { get; set; } = false;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
         public virtual ICollection<Habitacion> Habitaciones { get; set; } = new List<Habitacion>();
     }
 }

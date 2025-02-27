@@ -7,15 +7,15 @@ namespace Clivia.Core.Models
     {
         [Key, Column(Order = 0)]
         public int IdReserva { get; set; }
-        public virtual Reserva Reserva { get; set; }
+        public virtual Reserva Reserva { get; set; } = null!;
 
         [Key, Column(Order = 1)]
         public int IdServicio { get; set; }
-        public virtual Servicio Servicio { get; set; }
+        public virtual Servicio Servicio { get; set; } = null!;
 
         [Required]
         public short Cantidad { get; set; }
 
-        public string Comentarios { get; set; }
+        public string Comentarios { get; set; } = string.Empty;
     }
 }

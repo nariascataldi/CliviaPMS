@@ -13,11 +13,11 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdUsuario { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; } = null!;
 
         [Required]
         public int IdPropiedad { get; set; }
-        public virtual Propiedad Propiedad { get; set; }
+        public virtual Propiedad Propiedad { get; set; } = null!;
 
         [Required]
         [DataType(DataType.Date)]
@@ -37,23 +37,23 @@ namespace Clivia.Core.Models
         public decimal PrecioTotal { get; set; }
 
         [MaxLength(50)]
-        public string EstadoReserva { get; set; }
+        public string EstadoReserva { get; set; } = string.Empty;
 
         //public string Comentarios { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
 
-        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServiciosReservas>();
+        public virtual ICollection<ServicioReserva> ServiciosReservas { get; set; } = new List<ServicioReserva>();
         public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
-        public virtual ICollection<HabitacionFecha> HabitacionesFechas { get; set; } = new List<HabitacionesFecha>();
+        public virtual ICollection<HabitacionFecha> HabitacionesFechas { get; set; } = new List<HabitacionFecha>();
 
 
     }

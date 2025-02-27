@@ -7,10 +7,10 @@ namespace Clivia.Core.Models
     {
         [Key, Column(Order = 0)]
         public int IdPropiedad { get; set; }
-        public virtual Propiedad Propiedad { get; set; }
+        public virtual Propiedad Propiedad { get; set; } = null!;
 
         [Key, Column(Order = 1)]
         public short IdComodidad { get; set; }
-        public virtual Comodidad Comodidades { get; set; }
+        public virtual Comodidad Comodidades { get; set; } = null!;
     }
 }

@@ -13,19 +13,19 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(30)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
-        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
+        public string ModificadoPor { get; set; } = string.Empty;
+        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadComodidad>();
     }
 }

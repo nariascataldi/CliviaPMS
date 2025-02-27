@@ -11,10 +11,10 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdChecklist { get; set; }
-        public virtual Checklist Checklist { get; set; }
+        public virtual Checklist Checklist { get; set; } = null!;
 
         [Required]
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
         public short? Orden { get; set; }
 
