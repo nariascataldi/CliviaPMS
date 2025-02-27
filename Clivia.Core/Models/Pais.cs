@@ -12,12 +12,12 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(50)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
         [MaxLength(2)]
-        public string CodigoISO { get; set; }
+        public string CodigoISO { get; set; } = string.Empty;
 
-        public virtual ICollection<ProvinciaEstado> ProvinciasEstados { get; set; } = new List<ProvinciasEstados>();
+        public virtual ICollection<ProvinciaEstado> ProvinciasEstados { get; set; } = new List<ProvinciaEstado>();
 
     }
 }

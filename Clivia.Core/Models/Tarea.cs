@@ -11,11 +11,11 @@ namespace Clivia.Core.Models
         public int Id { get; set; }
 
         [Required]
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
 
         [Required]
         public int IdUsuarioAsignado { get; set; }
-        public virtual Usuario UsuarioAsignado { get; set; }
+        public virtual Usuario UsuarioAsignado { get; set; } = null!;
 
         public DateTime FechaAsignacion { get; set; } = DateTime.Now;
 
@@ -23,21 +23,21 @@ namespace Clivia.Core.Models
         public DateTime? FechaVencimiento { get; set; }
 
         [MaxLength(50)]
-        public string EstadoTarea { get; set; }
+        public string EstadoTarea { get; set; } = string.Empty;
 
         [MaxLength(50)]
-        public string Prioridad { get; set; }
+        public string Prioridad { get; set; } = string.Empty;
 
-        public string Comentarios { get; set; }
+        public string Comentarios { get; set; } = string.Empty;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
     }
 }

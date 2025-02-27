@@ -12,36 +12,36 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(15)]
-        public string TipoDocumento { get; set; }
+        public string TipoDocumento { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(15)]
-        public string Documento { get; set; }
+        public string Documento { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(50)]
-        public string NombreCompleto { get; set; }
+        public string NombreCompleto { get; set; } = string.Empty;
 
         [MaxLength(50)]
         [EmailAddress]
-        public string Correo { get; set; }
+        public string Correo { get; set; } = string.Empty;
 
         [MaxLength(15)]
-        public string NumeroTelefono { get; set; }
+        public string NumeroTelefono { get; set; } = string.Empty;
 
         [MaxLength(200)]
-        public string Direccion { get; set; }
+        public string Direccion { get; set; } = string.Empty;
 
-        public bool Estado { get; set; } = true;
+        public bool Estado { get; set; } = false;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
     }
 }

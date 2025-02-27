@@ -13,30 +13,28 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(100)]
-        public string NombrePropiedad { get; set; }
+        public string NombrePropiedad { get; set; } = string.Empty;
 
         [MaxLength(15)]
-        public string NumeroTelefono { get; set; }
+        public string NumeroTelefono { get; set; } = string.Empty;
 
         [Required]
         public int IdDireccion { get; set; }
-        public virtual Direccion Direccion { get; set; }
+        public virtual Direccion Direccion { get; set; } = null!;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
+
         public virtual ICollection<Habitacion> Habitaciones { get; set; } = new List<Habitacion>();
         public virtual ICollection<Resena> Resenas { get; set; } = new List<Resena>();
-
-        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadesComodidades>();
-
+        public virtual ICollection<PropiedadComodidad> PropiedadesComodidades { get; set; } = new List<PropiedadComodidad>();
         public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-
     }
 }

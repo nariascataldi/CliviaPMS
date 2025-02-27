@@ -13,14 +13,14 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdChecklist { get; set; }
-        public virtual Checklist Checklist { get; set; }
+        public virtual Checklist Checklist { get; set; } = null!;
 
         public int? IdHabitacion { get; set; }
-        public virtual Habitacion Habitacion { get; set; }
+        public virtual Habitacion Habitacion { get; set; } = null!;
 
         [Required]
         public int IdUsuario { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; } = null!;
 
         public DateTime FechaAplicacion { get; set; } = DateTime.Now;
 

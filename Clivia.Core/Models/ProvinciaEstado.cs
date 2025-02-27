@@ -12,11 +12,11 @@ namespace Clivia.Core.Models
 
         [Required]
         [MaxLength(50)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
         [Required]
         public int IdPais { get; set; }
-        public virtual Pais Pais { get; set; }
-        public virtual ICollection<CodigoPostal> CodigosPostales { get; set; } = new List<CodigosPostales>();
+        public virtual Pais Pais { get; set; } = null!;
+        public virtual ICollection<CodigoPostal> CodigosPostales { get; set; } = new List<CodigoPostal>();
     }
 }
