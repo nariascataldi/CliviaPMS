@@ -12,7 +12,7 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdReserva { get; set; }
-        public virtual Reserva Reserva { get; set; }
+        public virtual Reserva Reserva { get; set; } = null!;
 
         public DateTime FechaEmision { get; set; } = DateTime.Now;
 
@@ -21,21 +21,21 @@ namespace Clivia.Core.Models
         public decimal MontoTotal { get; set; }
 
         [MaxLength(50)]
-        public string MetodoPago { get; set; }
+        public string MetodoPago { get; set; } = string.Empty;
 
         [MaxLength(50)]
-        public string EstadoFactura { get; set; }
+        public string EstadoFactura { get; set; } = string.Empty;
 
-        public string Detalles { get; set; }
+        public string Detalles { get; set; } = string.Empty;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
     }
 }

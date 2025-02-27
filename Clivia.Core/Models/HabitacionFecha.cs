@@ -8,7 +8,7 @@ namespace Clivia.Core.Models
     {
         [Key, Column(Order = 0)]
         public int IdHabitacion { get; set; }
-        public virtual Habitacion Habitacion { get; set; }
+        public virtual Habitacion Habitacion { get; set; } = null!;
 
         [Key, Column(Order = 1)]
         [DataType(DataType.Date)]
@@ -18,6 +18,6 @@ namespace Clivia.Core.Models
         public decimal? Tarifa { get; set; }
 
         public int? IdReserva { get; set; }
-        public virtual Reserva Reserva { get; set; }
+        public virtual Reserva Reserva { get; set; } = null!;
     }
 }

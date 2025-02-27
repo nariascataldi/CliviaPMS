@@ -12,7 +12,7 @@ namespace Clivia.Core.Models
 
         [Required]
         public int IdUsuario { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; } = null!;
 
         [Required]
         [DataType(DataType.Date)]
@@ -24,16 +24,16 @@ namespace Clivia.Core.Models
         [DataType(DataType.Time)]
         public TimeSpan? HoraSalida { get; set; }
 
-        public string Comentarios { get; set; }
+        public string Comentarios { get; set; } = string.Empty;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [MaxLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = string.Empty;
 
         public DateTime? FechaModificacion { get; set; }
 
         [MaxLength(50)]
-        public string ModificadoPor { get; set; }
+        public string ModificadoPor { get; set; } = string.Empty;
     }
 }
