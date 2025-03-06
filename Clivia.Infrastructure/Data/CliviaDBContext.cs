@@ -1,4 +1,5 @@
 ﻿using Clivia.Core.Models;
+using Clivia.Infrastructure.Data.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clivia.Infrastructure.Data
@@ -36,49 +37,51 @@ namespace Clivia.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new HabitacionConfiguration());
+            modelBuilder.ApplyConfiguration(new ReservaConfiguration());
             // Relaciones 1:N
 
-            //Propiedades -> Habitaciones
-            modelBuilder.Entity<Habitacion>()
-                .HasOne(h => h.Propiedad)
-                .WithMany(p => p.Habitaciones)
-                .HasForeignKey(h => h.IdPropiedad)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////Propiedades -> Habitaciones
+            //modelBuilder.Entity<Habitacion>()
+            //    .HasOne(h => h.Propiedad)
+            //    .WithMany(p => p.Habitaciones)
+            //    .HasForeignKey(h => h.IdPropiedad)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            //EstadosHabitacion -> Habitaciones
-            modelBuilder.Entity<Habitacion>()
-                .HasOne(h => h.EstadoHabitacion)
-                .WithMany(eh => eh.Habitaciones)
-                .HasForeignKey(h => h.IdEstadoHabitacion)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////EstadosHabitacion -> Habitaciones
+            //modelBuilder.Entity<Habitacion>()
+            //    .HasOne(h => h.EstadoHabitacion)
+            //    .WithMany(eh => eh.Habitaciones)
+            //    .HasForeignKey(h => h.IdEstadoHabitacion)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            //Pisos -> Habitaciones
-            modelBuilder.Entity<Habitacion>()
-                .HasOne(h => h.Piso)
-                .WithMany(p => p.Habitaciones)
-                .HasForeignKey(h => h.IdPiso)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////Pisos -> Habitaciones
+            //modelBuilder.Entity<Habitacion>()
+            //    .HasOne(h => h.Piso)
+            //    .WithMany(p => p.Habitaciones)
+            //    .HasForeignKey(h => h.IdPiso)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            //Categorias -> Habitaciones
-            modelBuilder.Entity<Habitacion>()
-                .HasOne(h => h.Categoria)
-                .WithMany(c => c.Habitaciones)
-                .HasForeignKey(h => h.IdCategoria)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////Categorias -> Habitaciones
+            //modelBuilder.Entity<Habitacion>()
+            //    .HasOne(h => h.Categoria)
+            //    .WithMany(c => c.Habitaciones)
+            //    .HasForeignKey(h => h.IdCategoria)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            //Usuarios -> Reservas
-            modelBuilder.Entity<Reserva>()
-                .HasOne(r => r.Usuario)
-                .WithMany(u => u.Reservas)
-                .HasForeignKey(r => r.IdUsuario)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////Usuarios -> Reservas
+            //modelBuilder.Entity<Reserva>()
+            //    .HasOne(r => r.Usuario)
+            //    .WithMany(u => u.Reservas)
+            //    .HasForeignKey(r => r.IdUsuario)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            //Propiedades -> Reservas
-            modelBuilder.Entity<Reserva>()
-                .HasOne(r => r.Propiedad)
-                .WithMany(p => p.Reservas)
-                .HasForeignKey(r => r.IdPropiedad)
-                .OnDelete(DeleteBehavior.Restrict);
+            ////Propiedades -> Reservas
+            //modelBuilder.Entity<Reserva>()
+            //    .HasOne(r => r.Propiedad)
+            //    .WithMany(p => p.Reservas)
+            //    .HasForeignKey(r => r.IdPropiedad)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             //Usuarios -> Comentarios
             modelBuilder.Entity<Comentario>()
@@ -254,11 +257,11 @@ namespace Clivia.Infrastructure.Data
                 .OnDelete(DeleteBehavior.SetNull); //Si borras reserva, queda la habitación disponible.
 
             //Indices
-            modelBuilder.Entity<Habitacion>()
-                .HasIndex(h => h.IdPropiedad);
+            //modelBuilder.Entity<Habitacion>()
+            //    .HasIndex(h => h.IdPropiedad);
 
-            modelBuilder.Entity<Reserva>()
-                .HasIndex(r => r.IdUsuario);
+            //modelBuilder.Entity<Reserva>()
+            //    .HasIndex(r => r.IdUsuario);
 
             modelBuilder.Entity<Comentario>()
                 .HasIndex(c => c.IdReserva);
