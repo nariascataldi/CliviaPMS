@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <None Remove="Data\" />
+    <None Remove="Data\EntityConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Data\EntityConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clivia.Core\Clivia.Core.csproj" />
