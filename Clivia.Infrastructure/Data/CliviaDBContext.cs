@@ -37,51 +37,9 @@ namespace Clivia.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new HabitacionConfiguration());
-            modelBuilder.ApplyConfiguration(new ReservaConfiguration());
+            modelBuilder.ApplyConfiguration(new HabitacionConfiguracion());
+            modelBuilder.ApplyConfiguration(new ReservaConfiguracion());
             // Relaciones 1:N
-
-            ////Propiedades -> Habitaciones
-            //modelBuilder.Entity<Habitacion>()
-            //    .HasOne(h => h.Propiedad)
-            //    .WithMany(p => p.Habitaciones)
-            //    .HasForeignKey(h => h.IdPropiedad)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            ////EstadosHabitacion -> Habitaciones
-            //modelBuilder.Entity<Habitacion>()
-            //    .HasOne(h => h.EstadoHabitacion)
-            //    .WithMany(eh => eh.Habitaciones)
-            //    .HasForeignKey(h => h.IdEstadoHabitacion)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            ////Pisos -> Habitaciones
-            //modelBuilder.Entity<Habitacion>()
-            //    .HasOne(h => h.Piso)
-            //    .WithMany(p => p.Habitaciones)
-            //    .HasForeignKey(h => h.IdPiso)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            ////Categorias -> Habitaciones
-            //modelBuilder.Entity<Habitacion>()
-            //    .HasOne(h => h.Categoria)
-            //    .WithMany(c => c.Habitaciones)
-            //    .HasForeignKey(h => h.IdCategoria)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            ////Usuarios -> Reservas
-            //modelBuilder.Entity<Reserva>()
-            //    .HasOne(r => r.Usuario)
-            //    .WithMany(u => u.Reservas)
-            //    .HasForeignKey(r => r.IdUsuario)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            ////Propiedades -> Reservas
-            //modelBuilder.Entity<Reserva>()
-            //    .HasOne(r => r.Propiedad)
-            //    .WithMany(p => p.Reservas)
-            //    .HasForeignKey(r => r.IdPropiedad)
-            //    .OnDelete(DeleteBehavior.Restrict);
 
             //Usuarios -> Comentarios
             modelBuilder.Entity<Comentario>()
