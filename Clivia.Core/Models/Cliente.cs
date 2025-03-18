@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
@@ -32,7 +31,7 @@ namespace Clivia.Core.Models
         [MaxLength(200)]
         public string Direccion { get; set; } = string.Empty;
 
-        public bool Estado { get; set; } = false;
+        public bool Estado { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
