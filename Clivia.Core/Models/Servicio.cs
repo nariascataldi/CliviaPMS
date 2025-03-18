@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
@@ -21,7 +19,7 @@ namespace Clivia.Core.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal? Precio { get; set; }
 
-        public bool Estado { get; set; } = false;
+        public bool Estado { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
