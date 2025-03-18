@@ -39,8 +39,10 @@ namespace Clivia.Infrastructure.Data
         {
             modelBuilder.ApplyConfiguration(new HabitacionConfiguracion());
             modelBuilder.ApplyConfiguration(new ReservaConfiguracion());
-            // Relaciones 1:N
+            
+            // TODO: Continuar con las Configuraciones de las demás tablas
 
+            // Relaciones 1:N
             //Usuarios -> Comentarios
             modelBuilder.Entity<Comentario>()
                 .HasOne(c => c.Usuario)

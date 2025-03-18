@@ -24,7 +24,7 @@ namespace Clivia.Infrastructure.Data.EntityConfigurations
                    .HasForeignKey(h => h.IdPiso)
                    .OnDelete(DeleteBehavior.Restrict);
             //Categorias -> Habitaciones
-            builder.HasOne(h => h.Categoria)
+            builder.HasOne(h => h.Categorias)
                    .WithMany(c => c.Habitaciones)
                    .HasForeignKey(h => h.IdCategoria)
                    .OnDelete(DeleteBehavior.Restrict);

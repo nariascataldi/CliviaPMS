@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clivia.Core.Models
@@ -14,7 +12,7 @@ namespace Clivia.Core.Models
         [MaxLength(50)]
         public string Descripcion { get; set; } = string.Empty;
 
-        public bool Estado { get; set; } = false;
+        public bool Estado { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
