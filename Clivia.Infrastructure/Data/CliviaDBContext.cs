@@ -34,6 +34,8 @@ namespace Clivia.Infrastructure.Data
         public DbSet<ResultadoChecklist> ResultadosChecklists { get; set; }
         public DbSet<ResultadoItemChecklist> ResultadosItemsChecklists { get; set; }
         public DbSet<PropiedadComodidad> PropiedadesComodidades { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
