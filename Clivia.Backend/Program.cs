@@ -1,4 +1,8 @@
-﻿using Clivia.Infrastructure.Data;
+﻿using Clivia.Application.Services;
+using Clivia.Core.Repositories;
+using Clivia.Core.Services;
+using Clivia.Infrastructure.Data;
+using Clivia.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +18,12 @@ var app = builder.Build();
 // Configura la conexión a la base de datos
 builder.Services.AddDbContext<CliviaDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CliviaDBConnection")));
+
+// Repositorios
+builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
+
+// Services
+builder.Services.AddScoped<IHabitacionService, HabitacionService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
