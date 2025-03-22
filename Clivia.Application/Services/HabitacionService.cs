@@ -1,8 +1,6 @@
 using Clivia.Core.Models;
 using Clivia.Core.Repositories;
 using Clivia.Core.Services;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Clivia.Application.Services
 {
