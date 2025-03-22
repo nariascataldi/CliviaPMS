@@ -13,8 +13,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 // Configura la conexión a la base de datos
 builder.Services.AddDbContext<CliviaDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CliviaDBConnection")));
@@ -24,6 +22,8 @@ builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
 
 // Services
 builder.Services.AddScoped<IHabitacionService, HabitacionService>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
