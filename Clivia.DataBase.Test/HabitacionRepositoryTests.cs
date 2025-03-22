@@ -5,7 +5,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Clivia.Infrastructure.Test
+namespace Clivia.DataBase.Test
 {
     public class HabitacionRepositoryTests : IDisposable
     {
