@@ -5,15 +5,11 @@ VisualStudioVersion = 25.0.1706.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Core", "Clivia.Core\Clivia.Core.csproj", "{D3702603-5FE3-446E-A978-0FBC944DDB9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Core.Test", "Clivia.Core.Test\Clivia.Core.Test.csproj", "{17205B3C-E57D-4734-AD1F-C16B7EB9A985}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Infrastructure", "Clivia.Infrastructure\Clivia.Infrastructure.csproj", "{49C9C6B4-129B-499A-A64B-71E1281B0C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Infrastructure.Test", "Clivia.Infrastructure.Test\Clivia.Infrastructure.Test.csproj", "{FC71BE56-10AC-4AB5-B348-C62EB99B6E95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.DataBase.Test", "Clivia.DataBase.Test\Clivia.DataBase.Test.csproj", "{FC71BE56-10AC-4AB5-B348-C62EB99B6E95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Application", "Clivia.Application\Clivia.Application.csproj", "{DF462170-5234-471C-B989-D1108087E7A2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Application.Test", "Clivia.Application.Test\Clivia.Application.Test.csproj", "{121E91E9-08B2-472B-AD3E-8165D23717A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clivia.Backend", "Clivia.Backend\Clivia.Backend.csproj", "{FF6E7160-FF02-422E-96F2-3284BB5E6175}"
 EndProject
@@ -31,10 +27,6 @@ Global
 		{D3702603-5FE3-446E-A978-0FBC944DDB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3702603-5FE3-446E-A978-0FBC944DDB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3702603-5FE3-446E-A978-0FBC944DDB9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17205B3C-E57D-4734-AD1F-C16B7EB9A985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17205B3C-E57D-4734-AD1F-C16B7EB9A985}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17205B3C-E57D-4734-AD1F-C16B7EB9A985}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17205B3C-E57D-4734-AD1F-C16B7EB9A985}.Release|Any CPU.Build.0 = Release|Any CPU
 		{49C9C6B4-129B-499A-A64B-71E1281B0C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{49C9C6B4-129B-499A-A64B-71E1281B0C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C9C6B4-129B-499A-A64B-71E1281B0C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +39,6 @@ Global
 		{DF462170-5234-471C-B989-D1108087E7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF462170-5234-471C-B989-D1108087E7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF462170-5234-471C-B989-D1108087E7A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{121E91E9-08B2-472B-AD3E-8165D23717A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{121E91E9-08B2-472B-AD3E-8165D23717A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{121E91E9-08B2-472B-AD3E-8165D23717A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{121E91E9-08B2-472B-AD3E-8165D23717A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF6E7160-FF02-422E-96F2-3284BB5E6175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF6E7160-FF02-422E-96F2-3284BB5E6175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF6E7160-FF02-422E-96F2-3284BB5E6175}.Release|Any CPU.ActiveCfg = Release|Any CPU
