@@ -10,22 +10,23 @@ namespace Clivia.DataBase.Test
     public class HabitacionRepositoryTests : IDisposable
     {
         private readonly SqliteConnection _connection;
-        private readonly CliviaDBContext _context;
+        private readonly CliviaDbContext _context;
 
         public HabitacionRepositoryTests()
         {
+            #region Configuración SQLite en memoria
             // Crear una conexión SQLite en memoria
             _connection = new SqliteConnection("Filename=:memory:");
             _connection.Open();
 
             // Crear las opciones del DbContext
-            var options = new DbContextOptionsBuilder<CliviaDBContext>()
+            var options = new DbContextOptionsBuilder<CliviaDbContext>()
                 .UseSqlite(_connection)
                 .LogTo(Console.WriteLine, LogLevel.Information) // Habilita el logging
                 .Options;
 
             // Crear una instancia del DbContext
-            _context = new CliviaDBContext(options);
+            _context = new CliviaDbContext(options);
 
             // Asegurarse de que la base de datos esté creada
             _context.Database.EnsureCreated();
@@ -33,9 +34,10 @@ namespace Clivia.DataBase.Test
 
             // Deshabilitar el tracking de cambios (temporalmente)
             _context.ChangeTracker.AutoDetectChangesEnabled = false;
-
+            #endregion
             // Crear las entidades
-            var pais = new Pais { Nombre = "United State", CodigoISO = "US" };
+            #region Entidades complementarias a Habitación
+            var pais = new Pais { Nombre = "United State", CodigoIso = "US" };
             _context.Paises.Add(pais);
             _context.SaveChanges();
 
@@ -80,7 +82,7 @@ namespace Clivia.DataBase.Test
             var categoria = new Categoria { Descripcion = "Estándar" };
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
-         
+            #endregion
             // Habilitar el tracking de cambios de nuevo
             _context.ChangeTracker.AutoDetectChangesEnabled = true;
 
@@ -141,6 +143,18 @@ namespace Clivia.DataBase.Test
             Assert.NotNull(habitacion);
             Assert.Equal("101", habitacion.NumeroHabitacion);
         }
+        [Fact]
+        public async Task ObtenerHabitacionPorIdSinRegistro_NoSeEncontroNingunaHabitacion()
+        {
+            var repository = new HabitacionRepository(_context);
+            var idInexistente = 99;
+         
+            var exception = await Assert.ThrowsAsync<KeyNotFoundException>(
+                async () => await repository.ObtenerHabitacionPorId(idInexistente)
+            );
+            
+            Assert.Equal($"No se encontró ninguna Habitación con el ID {idInexistente}.", exception.Message);
+        }
 
         [Fact]
         public async Task CrearHabitacion_DeberiaCrearUnaNuevaHabitacion()
@@ -173,7 +187,7 @@ namespace Clivia.DataBase.Test
             Assert.Equal("103", _context.Habitaciones.OrderByDescending(h => h.Id).First().NumeroHabitacion);
         }
 
-        //TODO: Escribe más pruebas para los otros métodos del repositorio (ActualizarHabitacion, EliminarHabitacion)
+        //TODO: Escribe más pruebas para los otros métodos del repositorio EliminarHabitacion
         [Fact]
         public async Task ActualizarHabitacion_DeberiaActualizarLaHabitacionCorrectamente()
         {

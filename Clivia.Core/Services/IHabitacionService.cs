@@ -1,6 +1,5 @@
 using Clivia.Core.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Clivia.Core.Dtos; // Asegúrate de tener el using para los DTOs
 
 namespace Clivia.Core.Services
 {
@@ -8,8 +7,11 @@ namespace Clivia.Core.Services
     {
         Task<IEnumerable<Habitacion>> ObtenerTodasLasHabitaciones();
         Task<Habitacion> ObtenerHabitacionPorId(int id);
-        Task<Habitacion> CrearHabitacion(Habitacion habitacion);
-        Task<Habitacion> ActualizarHabitacion(Habitacion habitacion);
+        // Task<Habitacion> CrearHabitacion(Habitacion habitacion); // Puedes comentar o eliminar esta si ya no la usas directamente
+        Task<Habitacion> ActualizarHabitacion(Habitacion habitacion); // Probablemente también querrás un DTO para actualizar
         Task<bool> EliminarHabitacion(int id);
+
+        // --- Nuevo método para crear desde DTO ---
+        Task<Habitacion> CrearHabitacionDesdeDto(CrearHabitacionDto dto);
     }
 }
