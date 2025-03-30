@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Clivia.Infrastructure.Data
 {
-    public class CliviaDBContext : DbContext
+    public class CliviaDbContext : DbContext
     {
-        public CliviaDBContext(DbContextOptions<CliviaDBContext> options) : base(options) { }
+        public CliviaDbContext(DbContextOptions<CliviaDbContext> options) : base(options) { }
 
         public DbSet<Habitacion> Habitaciones { get; set; }
         public DbSet<Reserva> Reservas { get; set; }

@@ -7,9 +7,9 @@ namespace Clivia.Infrastructure.Repositories
 {
     public class HabitacionRepository : IHabitacionRepository
     {
-        private readonly CliviaDBContext _context;
+        private readonly CliviaDbContext _context;
 
-        public HabitacionRepository(CliviaDBContext context)
+        public HabitacionRepository(CliviaDbContext context)
         {
             _context = context;
         }
@@ -21,7 +21,13 @@ namespace Clivia.Infrastructure.Repositories
 
         public async Task<Habitacion> ObtenerHabitacionPorId(int id)
         {
-            return await _context.Habitaciones.FindAsync(id);
+            var habitacion = await _context.Habitaciones.FindAsync(id);
+            if (habitacion == null)
+            {
+                // Puedes elegir la excepción que mejor se adapte (e.g., NotFoundException personalizada)
+                throw new KeyNotFoundException($"No se encontró ninguna Habitación con el ID {id}.");
+            }
+            return habitacion;
         }
 
         public async Task<Habitacion> CrearHabitacion(Habitacion habitacion)

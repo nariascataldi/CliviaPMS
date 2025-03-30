@@ -1,27 +1,32 @@
-﻿using Clivia.Application.Services;
-using Clivia.Core.Repositories;
-using Clivia.Core.Services;
-using Clivia.Infrastructure.Data;
-using Clivia.Infrastructure.Repositories;
+﻿using Clivia.Application.Services; // Necesario para HabitacionService
+using Clivia.Core.Repositories;    // Necesario para IHabitacionRepository
+using Clivia.Core.Services;       // Necesario para IHabitacionService
+using Clivia.Infrastructure.Data; // Necesario para CliviaDbContext
+using Clivia.Infrastructure.Repositories; // Necesario para HabitacionRepository
 using Microsoft.EntityFrameworkCore;
+using System.Reflection; // Necesario para Assembly.Load
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configura la conexión a la base de datos
-builder.Services.AddDbContext<CliviaDBContext>(options =>
+builder.Services.AddDbContext<CliviaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CliviaDBConnection")));
 
+// --- Configuración de AutoMapper ---
+// ESTA LÍNEA ES CORRECTA para registrar perfiles desde otro ensamblado
+builder.Services.AddAutoMapper(Assembly.Load("Clivia.Application"));
+
+// --- Inyección de Dependencias ---
 // Repositorios
 builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
-
 // Services
 builder.Services.AddScoped<IHabitacionService, HabitacionService>();
+// ... Aquí añadirás más repositorios y servicios (IReservaRepository, etc.)
 
 var app = builder.Build();
 
@@ -33,10 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
-app.MapControllers();
+app.MapControllers(); // Asegúrate de que esta línea esté después de UseAuthorization si usas atributos [Authorize]
 
 app.Run();
-
