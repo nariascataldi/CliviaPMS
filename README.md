@@ -219,5 +219,56 @@ Si deseas contribuir al proyecto, sigue estos pasos:
 
 ## Contacto
 
-[Tu Nombre/Equipo]
-[Tu Email]
+Néstor Arias
+cliviashostelsalta@gmail.com
+
+
+## Arquitectura del Sistema
+
+Aquí puedes ver un diagrama de la arquitectura de Clivia PMS:
+
+```mermaid
+flowchart TD;
+    subgraph "Core Layer"
+        core["Clivia.Core"]:::coreStyle
+    end
+
+    subgraph "Data Layer"
+        infra["Clivia.Infrastructure"]:::infraStyle
+    end
+
+    subgraph "Business Layer"
+        app["Clivia.Application"]:::appStyle
+    end
+
+    subgraph "API Layer"
+        backend["Clivia.Backend"]:::backendStyle
+    end
+
+    subgraph "Presentation Layer"
+        frontend["Clivia.Frontend"]:::frontendStyle
+    end
+
+    subgraph "Integration Layer"
+        integrations["Clivia.Integrations"]:::integrationStyle
+    end
+
+    core -->|"defines contracts"| app
+    core -->|"defines models"| infra
+    app -->|"uses repositories"| infra
+    backend -->|"consumes services"| app
+    frontend -->|"calls API"| backend
+    integrations -->|"integrates via API"| backend
+
+    click core "https://github.com/nariascataldi/cliviapms/blob/main/Clivia.Core"
+    click infra "https://github.com/nariascataldi/cliviapms/blob/main/Clivia.Infrastructure"
+    click app "https://github.com/nariascataldi/cliviapms/blob/main/Clivia.Application"
+    click backend "https://github.com/nariascataldi/cliviapms/blob/main/Clivia.Backend"
+
+    classDef coreStyle fill:#FFD700,stroke:#333,stroke-width:2px;
+    classDef infraStyle fill:#87CEEB,stroke:#333,stroke-width:2px;
+    classDef appStyle fill:#98FB98,stroke:#333,stroke-width:2px;
+    classDef backendStyle fill:#FFA07A,stroke:#333,stroke-width:2px;
+    classDef frontendStyle fill:#ADD8E6,stroke:#333,stroke-width:2px;
+    classDef integrationStyle fill:#FFB6C1,stroke:#333,stroke-width:2px;
+```
