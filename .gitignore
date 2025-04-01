@@ -405,4 +405,4 @@ ASALocalRun/
 .localhistory/
 
 #variable de entorno de desarrollo
-Properties/launchSettings.json
+Clivia.Backend/Properties/launchSettings.json
