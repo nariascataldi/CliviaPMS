@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Clivia.Infrastructure.Migrations
 {
-    [DbContext(typeof(CliviaDBContext))]
+    [DbContext(typeof(CliviaDbContext))]
     [Migration("20250318140334_Initial")]
     partial class Initial
     {

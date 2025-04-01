@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Clivia.Infrastructure.Migrations
 {
-    [DbContext(typeof(CliviaDBContext))]
+    [DbContext(typeof(CliviaDbContext))]
     partial class CliviaDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
