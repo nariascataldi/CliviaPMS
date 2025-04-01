@@ -15,7 +15,8 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5201",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__CliviaDBConnection": "Host=localhost;Database=CliviaDB;Username=postgres;Password=30221985;Port=5433;Timeout=10"
       },
       "dotnetRunMessages": true
     },
@@ -25,7 +26,8 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7150;http://localhost:5201",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__CliviaDBConnection": "Host=localhost;Database=CliviaDB;Username=postgres;Password=30221985;Port=5433;Timeout=10"
       },
       "dotnetRunMessages": true
     },
@@ -34,7 +36,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__CliviaDBConnection": "Host=localhost;Database=CliviaDB;Username=postgres;Password=30221985;Port=5433;Timeout=10"
       }
     }
   }
