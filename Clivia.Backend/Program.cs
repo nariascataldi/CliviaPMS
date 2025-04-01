@@ -4,7 +4,8 @@ using Clivia.Core.Services;       // Necesario para IHabitacionService
 using Clivia.Infrastructure.Data; // Necesario para CliviaDbContext
 using Clivia.Infrastructure.Repositories; // Necesario para HabitacionRepository
 using Microsoft.EntityFrameworkCore;
-using System.Reflection; // Necesario para Assembly.Load
+
+// Necesario para Assembly.Load
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,13 +14,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Variables de Entorno
+builder.Configuration.AddEnvironmentVariables();
+
 // Configura la conexión a la base de datos
 builder.Services.AddDbContext<CliviaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CliviaDBConnection")));
 
 // --- Configuración de AutoMapper ---
-// ESTA LÍNEA ES CORRECTA para registrar perfiles desde otro ensamblado
-builder.Services.AddAutoMapper(Assembly.Load("Clivia.Application"));
+builder.Services.AddAutoMapper(typeof(HabitacionService).Assembly);
 
 // --- Inyección de Dependencias ---
 // Repositorios
