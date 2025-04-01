@@ -6,9 +6,9 @@ using System.IO;
 
 namespace Clivia.Infrastructure.Data
 {
-    public class CliviaDBContextFactory : IDesignTimeDbContextFactory<CliviaDBContext>
+    public class CliviaDbContextFactory : IDesignTimeDbContextFactory<CliviaDbContext>
     {
-        public CliviaDBContext CreateDbContext(string[] args)
+        public CliviaDbContext CreateDbContext(string[] args)
         {
             // 1. Obtener la ruta del directorio de contenido (donde está appsettings.json)
             var basePath = Directory.GetCurrentDirectory();
@@ -25,11 +25,11 @@ namespace Clivia.Infrastructure.Data
             // Console.WriteLine($"Connection string: {connectionString}"); // Imprime la cadena de conexión para depuración
 
             // 4. Crear las opciones del DbContext
-            var builder = new DbContextOptionsBuilder<CliviaDBContext>();
+            var builder = new DbContextOptionsBuilder<CliviaDbContext>();
             builder.UseNpgsql(connectionString);
 
             // 5. Crear y retornar el DbContext
-            return new CliviaDBContext(builder.Options);
+            return new CliviaDbContext(builder.Options);
         }
     }
 }
