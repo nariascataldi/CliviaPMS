@@ -7,6 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Clivia.DataBase.Test
 {
+    // TODO: Probando la capa de acceso a datos con entidades. Realizar con las demás entidades.
+    /// <summary>
+    /// Probando la capa de acceso a datos con entidades
+    /// </summary>
     public class HabitacionRepositoryTests : IDisposable
     {
         private readonly SqliteConnection _connection;
