@@ -1,19 +1,13 @@
-using Clivia.Core.Models;
-using Clivia.Core.Dtos; // Asegúrate de tener el using para los DTOs
+using Clivia.Core.Dtos;
 
 namespace Clivia.Core.Services
 {
     public interface IHabitacionService
     {
-        Task<IEnumerable<Habitacion>> ObtenerTodasLasHabitaciones();
-        Task<Habitacion> ObtenerHabitacionPorId(int id);
-        Task<Habitacion> CrearHabitacion(Habitacion habitacion); // Puedes comentar o eliminar esta si ya no la usas directamente
-        Task<bool> EliminarHabitacion(int id);
-
-        // --- Nuevo método para crear desde DTO ---
-        Task<HabitacionDto> CrearHabitacionDesdeDto(CrearHabitacionDto dto);
-        Task<IEnumerable<HabitacionDto>> ObtenerTodasLasHabitacionesAsync();
-        Task<HabitacionDto> ObtenerHabitacionPorIdAsync(int id);
-        Task<HabitacionDto> ActualizarHabitacionDesdeDto(Habitacion habitacion);
+        Task<IEnumerable<HabitacionDto>> ObtenerTodasLasHabitacionesAsync(); // Devuelve DTO
+        Task<HabitacionDto> ObtenerHabitacionPorIdAsync(int id); // Devuelve DTO
+        Task<HabitacionDto> CrearHabitacionDesdeDtoAsync(CrearHabitacionDto dto); // Acepta y devuelve DTO
+        Task<HabitacionDto> ActualizarHabitacionDesdeDtoAsync(int id, ActualizarHabitacionDto dto); // Acepta y devuelve DTO (o void/bool)
+        Task<bool> EliminarHabitacionAsync(int id);
     }
 }

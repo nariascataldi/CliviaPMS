@@ -1,12 +1,9 @@
-using AutoMapper; // Necesario para IMapper
+using AutoMapper;
 using Clivia.Core.Dtos;
 using Clivia.Core.Models;
 using Clivia.Core.Repositories;
 using Clivia.Core.Services;
-using Microsoft.EntityFrameworkCore;
-
-// Considera añadir usings para otros repositorios si haces validación de IDs aquí
-// using Clivia.Core.Repositories; // Por ejemplo, para IPropiedadRepository
+using Microsoft.EntityFrameworkCore; // Para DbUpdateException
 
 namespace Clivia.Application.Services
 {
@@ -14,141 +11,103 @@ namespace Clivia.Application.Services
     {
         private readonly IHabitacionRepository _habitacionRepository;
         private readonly IMapper _mapper;
-        // Opcional: Inyectar otros repositorios para validar IDs
+        // Inyectar otros repos si validas IDs:
         // private readonly IPropiedadRepository _propiedadRepository;
-        // private readonly IEstadoHabitacionRepository _estadoHabitacionRepository;
-        // ... etc
 
-        public HabitacionService(
-            IHabitacionRepository habitacionRepository,
-            IMapper mapper
-            // ,IPropiedadRepository propiedadRepository // Inyectar si validas
-            // ... etc
-            )
+        public HabitacionService(IHabitacionRepository habitacionRepository, IMapper mapper /*, IPropiedadRepository propiedadRepository*/)
         {
-            _habitacionRepository = habitacionRepository;
-            _mapper = mapper;
-            // _propiedadRepository = propiedadRepository; // Asignar si validas
-            // ... etc
-        }
-
-        public Task<HabitacionDto> CrearHabitacionDesdeDto(CrearHabitacionDto dto)
-        {
-            throw new NotImplementedException();
+            _habitacionRepository = habitacionRepository ?? throw new ArgumentNullException(nameof(habitacionRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            // _propiedadRepository = propiedadRepository;
         }
 
         public async Task<IEnumerable<HabitacionDto>> ObtenerTodasLasHabitacionesAsync()
         {
-            // 1. Obtener las entidades desde el repositorio
-            var habitacionesEntidad = await _habitacionRepository.ObtenerTodasLasHabitaciones();
-
-            // 2. Mapear las entidades a DTOs usando AutoMapper
-            var habitacionesDto = _mapper.Map<IEnumerable<HabitacionDto>>(habitacionesEntidad);
-
-            // 3. Devolver los DTOs mapeados
-            return habitacionesDto;
-        }
-
-        public Task<IEnumerable<Habitacion>> ObtenerTodasLasHabitaciones()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Habitacion> ObtenerHabitacionPorId(int id)
-        {
-             // Considera devolver HabitacionDto aquí también
-            return await _habitacionRepository.ObtenerHabitacionPorId(id);
-        }
-
-        public Task<Habitacion> CrearHabitacion(Habitacion habitacion)
-        {
-            throw new NotImplementedException();
+            var entidades = await _habitacionRepository.ObtenerTodasLasHabitaciones();
+            return _mapper.Map<IEnumerable<HabitacionDto>>(entidades); // Mapea a DTO
         }
 
         public async Task<HabitacionDto> ObtenerHabitacionPorIdAsync(int id)
         {
-            var habitacion = await _habitacionRepository.ObtenerHabitacionPorId(id);
-            // Manejar caso no encontrado si el repo devuelve null
-            if (habitacion == null)
+            var entidad = await _habitacionRepository.ObtenerHabitacionPorId(id);
+            if (entidad == null)
             {
-                // Puedes lanzar una excepción específica o devolver null según tu diseño
+                // Considera lanzar una excepción específica o devolver null
+                // dependiendo de cómo quieras manejarlo en el controlador.
+                // Lanzar es a menudo más explícito para "no encontrado".
                 throw new KeyNotFoundException($"No se encontró Habitación con ID {id}");
                 // return null;
             }
-            return _mapper.Map<HabitacionDto>(habitacion);
+            return _mapper.Map<HabitacionDto>(entidad); // Mapea a DTO
         }
 
-        public Task<HabitacionDto> ActualizarHabitacionDesdeDto(Habitacion habitacion)
+        public async Task<HabitacionDto> CrearHabitacionDesdeDtoAsync(CrearHabitacionDto dto)
         {
-            throw new NotImplementedException();
+            // --- Validación Opcional de IDs relacionados ---
+            // Ejemplo: var prop = await _propiedadRepository.GetByIdAsync(dto.IdPropiedad); if (prop == null) throw new ArgumentException(...);
+            // --- Fin Validación ---
+
+            var entidad = _mapper.Map<Habitacion>(dto); // Mapea DTO a Entidad
+
+            // Aquí puedes establecer valores que no vienen del DTO si es necesario
+            // entidad.FechaCreacion = DateTime.UtcNow;
+            // entidad.CreadoPor = "Sistema"; // O obtener usuario actual
+
+            try
+            {
+                var entidadCreada = await _habitacionRepository.CrearHabitacion(entidad);
+                return _mapper.Map<HabitacionDto>(entidadCreada); // Mapea la entidad creada de vuelta a DTO
+            }
+            catch (DbUpdateException ex) // Captura errores específicos de EF Core
+            {
+                // Loguear el error (ex)
+                // Podrías devolver una excepción personalizada o null
+                Console.WriteLine($"Error de base de datos al crear habitación: {ex.InnerException?.Message ?? ex.Message}");
+                throw new Exception("Error al guardar la habitación en la base de datos.", ex); // Relanza o maneja
+            }
         }
 
-
-        // Puedes mantener este método si lo necesitas internamente,
-        // pero la creación desde la API debería usar el método con DTO.
-        // public async Task<Habitacion> CrearHabitacion(Habitacion habitacion)
-        // {
-        //     return await _habitacionRepository.CrearHabitacion(habitacion);
-        // }
-
-        public async Task<Habitacion> ActualizarHabitacion(Habitacion habitacion)
+        public async Task<HabitacionDto> ActualizarHabitacionDesdeDtoAsync(int id, ActualizarHabitacionDto dto)
         {
-            // Idealmente, tendrías un método ActualizarHabitacionDesdeDto similar
-            return await _habitacionRepository.ActualizarHabitacion(habitacion);
+            var entidadExistente = await _habitacionRepository.ObtenerHabitacionPorId(id);
+            if (entidadExistente == null)
+            {
+                throw new KeyNotFoundException($"No se encontró Habitación con ID {id} para actualizar.");
+            }
+
+            // --- Validación Opcional de IDs relacionados en el DTO de actualización ---
+
+            // Mapea los cambios del DTO sobre la entidad existente que recuperaste
+            _mapper.Map(dto, entidadExistente);
+
+            // Aquí puedes establecer valores de auditoría si es necesario
+            // entidadExistente.FechaModificacion = DateTime.UtcNow;
+            // entidadExistente.ModificadoPor = "Sistema";
+
+            try
+            {
+                var entidadActualizada = await _habitacionRepository.ActualizarHabitacion(entidadExistente);
+                 return _mapper.Map<HabitacionDto>(entidadActualizada); // Devuelve el DTO actualizado
+            }
+             catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"Error de base de datos al actualizar habitación: {ex.InnerException?.Message ?? ex.Message}");
+                throw new Exception("Error al guardar los cambios de la habitación en la base de datos.", ex);
+            }
+            // Si el método de la interfaz devolviera void o bool, no necesitarías mapear de vuelta.
+            // await _habitacionRepository.ActualizarHabitacion(entidadExistente);
+            // return true; // o simplemente no devolver nada (void)
         }
-// TODO: ActualizarHabitacionDesdeDto
-        // public async Task<HabitacionDto> ActualizarHabitacionDesdeDto(HabitacionDto habitacion)
-        // {
-        //     var habitacionExistente = await _habitacionRepository.ObtenerHabitacionPorId(habitacion.Id);
-        //     if (habitacionExistente == null)
-        //     {
-        //         throw new KeyNotFoundException($"No se encontró Habitación con ID {habitacion.Id} para actualizar.");
-        //     }
-        //
-        //     // Mapear los cambios del DTO sobre la entidad existente
-        //     _mapper.Map(habitacion, habitacionExistente);
-        //
-        //     return await _habitacionRepository.ActualizarHabitacion(habitacionExistente);
-        // }
 
-        public async Task<bool> EliminarHabitacion(int id)
+        public async Task<bool> EliminarHabitacionAsync(int id)
         {
+             // Podrías querer verificar si existe antes de intentar eliminar
+             var entidad = await _habitacionRepository.ObtenerHabitacionPorId(id);
+             if (entidad == null)
+             {
+                  return false; // O lanzar KeyNotFoundException si prefieres
+             }
             return await _habitacionRepository.EliminarHabitacion(id);
         }
-
-        // --- Implementación del nuevo método ---
-        // TODO: Actualizar el HabitacionRepositorio para que sea compatible con automapper
-        // public async Task<HabitacionDto> CrearHabitacionDesdeDto(CrearHabitacionDto dto)
-        // {
-        //     // 1. Validación (Opcional pero Recomendado):
-        //     //    Verificar que los IDs (IdPropiedad, IdEstadoHabitacion, etc.) existen.
-        //     //    Si no existen, podrías retornar null o lanzar una excepción específica.
-        //     //    Ejemplo (requiere inyectar los repositorios correspondientes):
-        //     //    var propiedadExiste = await _propiedadRepository.ObtenerPropiedadPorId(dto.IdPropiedad) != null;
-        //     //    if (!propiedadExiste) return null; // O lanzar excepción
-        //
-        //     // 2. Mapear el DTO a la Entidad Habitacion
-        //     var nuevaHabitacion = _mapper.Map<Habitacion>(dto);
-        //
-        //     // 3. Establecer valores predeterminados o calculados si es necesario
-        //     //    (AutoMapper puede haber manejado los campos básicos)
-        //     //    Ej: nuevaHabitacion.FechaCreacion = DateTime.UtcNow;
-        //     //    Ej: nuevaHabitacion.CreadoPor = "UsuarioActual"; // Necesitarías obtener el usuario actual
-        //
-        //     // 4. Llamar al Repositorio para crear la entidad
-        //     try
-        //     {
-        //         var habitacionCreada = await _habitacionRepository.CrearHabitacion(nuevaHabitacion);
-        //         return habitacionCreada;
-        //     }
-        //     catch (DbUpdateException ex) // Captura errores de BD (ej: FK constraint)
-        //     {
-        //          // Loguear el error (ex)
-        //          // Podrías analizar ex.InnerException para ver si es una violación de FK
-        //          // y devolver null o lanzar una excepción más específica si un ID era inválido.
-        //         Console.WriteLine($"Error al guardar la habitación: {ex.Message}"); // Logging simple
-        //         return null; // Indica que hubo un problema al guardar
-        //     }
-        // }
     }
 }
