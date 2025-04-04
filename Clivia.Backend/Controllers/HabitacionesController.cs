@@ -24,7 +24,7 @@ namespace Clivia.Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HabitacionDto>>> ObtenerTodasLasHabitaciones()
         {
-            var habitaciones = await _habitacionService.ObtenerTodasLasHabitaciones(); // El servicio podría devolver entidades o DTOs
+            var habitaciones = await _habitacionService.ObtenerTodasLasHabitacionesAsync(); // El servicio podría devolver entidades o DTOs
             // Mapea a DTO si el servicio devuelve entidades
             var habitacionesDto = _mapper.Map<IEnumerable<HabitacionDto>>(habitaciones);
             return Ok(habitacionesDto);
@@ -33,7 +33,7 @@ namespace Clivia.Backend.Controllers
          [HttpGet("{id}")]
         public async Task<ActionResult<HabitacionDto>> ObtenerHabitacionPorId(int id)
         {
-             var habitacion = await _habitacionService.ObtenerHabitacionPorId(id); // Servicio devuelve entidad
+             var habitacion = await _habitacionService.ObtenerHabitacionPorIdAsync(id); // Servicio devuelve entidad
              if (habitacion == null)
              {
                  return NotFound();
@@ -54,7 +54,7 @@ namespace Clivia.Backend.Controllers
             }
 
             // Llama al nuevo método del servicio que acepta el DTO
-            var nuevaHabitacionEntidad = await _habitacionService.CrearHabitacionDesdeDto(crearDto);
+            var nuevaHabitacionEntidad = await _habitacionService.CrearHabitacionDesdeDtoAsync(crearDto);
 
             // Verifica si el servicio devolvió null (indicando un error, ej: ID relacionado inválido)
             if (nuevaHabitacionEntidad == null)

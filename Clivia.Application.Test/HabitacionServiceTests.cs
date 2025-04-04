@@ -65,7 +65,8 @@ public class HabitacionServiceTests
     }
 
     // TODO: Falta el método CrearHabitacionAsync
-    [Fact(Skip = "Método CrearHabitacionDesdeDto aún no implementado o en revisión")]
+    // [Fact(Skip = "Método CrearHabitacionDesdeDto aún no implementado o en revisión")]
+    [Fact]
     public async Task CrearHabitacionAsync_DeberiaMapearDtoAEntidad_LlamarRepo_Y_MapearResultadoADto()
     {
         // Arrange
@@ -96,7 +97,7 @@ public class HabitacionServiceTests
             .ReturnsAsync(entidadCreada); // Devuelve la entidad con ID y relaciones
 
         // Act
-        var resultDto = await _service.CrearHabitacionDesdeDto(createDto);
+        var resultDto = await _service.CrearHabitacionDesdeDtoAsync(createDto);
 
         // Assert
         Assert.NotNull(resultDto);
